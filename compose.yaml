@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   webapi:
-    image: mcr.microsoft.com/dotnet/aspnet:5.0
+    image: mcr.microsoft.com/dotnet/aspnet:6.0
     build:
       context: .
       dockerfile: Dockerfile
