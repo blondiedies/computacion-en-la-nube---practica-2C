@@ -37,7 +37,7 @@ namespace computación_en_la_nube___práctica_2C.Controllers
         }
     }
 
-    [Route("api/[controller]")]
+
     [ApiController]
     public class ValuesController : ControllerBase
     {
