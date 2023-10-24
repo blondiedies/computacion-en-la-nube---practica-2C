@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  webapi:
+    image: mcr.microsoft.com/dotnet/aspnet:5.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
