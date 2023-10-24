@@ -60,8 +60,34 @@ namespace computación_en_la_nube___práctica_2C.Controllers
         public void Post([FromBody] ObjectModel value)
         {
             List<ObjectModel> list = JsonUtils.ReadJson();
+
+            // Generar un nuevo id para el objeto
+            int newId = GenerateNewId(list);
+
+            // Asignar el nuevo id al objeto
+            value.id = newId;
+
+            // Agregar el objeto a la lista
             list.Add(value);
+
+            // Guardar los cambios en el archivo JSON
             JsonUtils.WriteJson(list);
+        }
+
+        // Generar un nuevo id para el objeto
+        private int GenerateNewId(List<ObjectModel> list)
+        {
+            if (list.Count == 0)
+            {
+                // Si la lista está vacía, asignar el id 1 al primer objeto
+                return 1;
+            }
+            else
+            {
+                // Obtener el id más alto en la lista y generar un nuevo id incrementándolo en 1
+                int maxId = list.Max(obj => obj.id);
+                return maxId + 1;
+            }
         }
 
         // GET api/<ValuesController>/directories
