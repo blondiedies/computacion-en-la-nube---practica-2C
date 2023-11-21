@@ -10,7 +10,7 @@ ENV HTTPS_PROXY http://proxylab.ucab.edu.ve:3128
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["computación en la nube - práctica 2C.csproj", "."]
-RUN dotnet restore "./computación en la nube - práctica 2C.csproj"
+RUN dotnet restore --disable-parallel "./computación en la nube - práctica 2C.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "computación en la nube - práctica 2C.csproj" -c Release -o /app/build
